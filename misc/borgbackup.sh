@@ -7,6 +7,10 @@
 #
 # base script from here:
 # https://thomas-leister.de/server-backups-mit-borg/
+#
+# quick start with most helpfull commands
+# http://borgbackup.readthedocs.io/en/stable/quickstart.html
+
 
 # use sshfs to mount the remote share
 # restrict the usage on the remote server
@@ -63,7 +67,7 @@ echo "Creating gitlab db dump ..."
 echo "Syncing backup files ..."
 # Backup all of /home and /var/www except a few
 # excluded directories
-borg create -v --stats --compression lzma,5     \
+borg create -v --stats --list --compression lzma,5     \
     "$REPOSITORY"::'{now:%Y-%m-%d}'               \
     /root/backup                                \
     /var/opt/gitlab/backups                     \
