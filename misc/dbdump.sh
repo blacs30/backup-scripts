@@ -41,9 +41,9 @@ for db in $DBS
     if [ "$DUMP" == "yes" ]; then
         echo "BACKING UP $db";
         if ! mysqldump --debug-info --add-drop-database --opt --lock-all-tables -u "$DBUSER" -p"$DBPASSWD" -h "$DBHOST" -P "$DBPORT" "$db" > "${DBBAKPATH}${db}"; then
-            echo "Dump of $db failed!"
+            echo "Dump of $db failed!" ; exit 1
         fi
     fi
 done;
 
-echo "# Start backup of MYSQL"
+echo "# End backup of MYSQL"
