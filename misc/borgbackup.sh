@@ -124,6 +124,6 @@ fi
 ## Send mail to admin
 ##
 
-if [ !  "$MAILING" = "0" ] && [ ! "$ERRORS" = "0" ]; then
+if [ "$MAILING" = "1" ] && [ "$ERRORS" -gt "0" ]; then
     mailx -a "From: \"$HOST\" Backup <\"$HOST\">" -s "Backup ERROR | ""$HOST" $MAIL_RECIPIENT < $LOG
 fi
